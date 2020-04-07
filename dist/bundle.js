@@ -250,19 +250,91 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var path
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var universal_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! universal-router */ \"./node_modules/universal-router/module.js\");\n/* harmony import */ var _simple_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./simple.ts */ \"./src/simple.ts\");\n\n\nconst routes = [{\n  path: \"/\",\n  // optional\n  action: () => `<hello-world></hello-world>`\n}, {\n  path: \"/home\",\n  // optional\n  action: () => `<div>hello</div>`\n}];\nconst router = new universal_router__WEBPACK_IMPORTED_MODULE_0__[\"default\"](routes);\nrouter.resolve(\"/\").then(html => {\n  document.body.innerHTML = html.toString();\n});\nsetTimeout(() => {\n  router.resolve(\"/home\").then(html => {\n    document.body.innerHTML = html.toString();\n  });\n}, 5000);\n\n//# sourceURL=webpack:///./src/index.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var universal_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! universal-router */ \"./node_modules/universal-router/module.js\");\n/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./routes */ \"./src/routes/index.ts\");\n\n\nconst router = new universal_router__WEBPACK_IMPORTED_MODULE_0__[\"default\"](_routes__WEBPACK_IMPORTED_MODULE_1__[\"routes\"]);\nrouter.resolve(\"/\").then(html => {\n  document.body.innerHTML = html.toString();\n});\n\n//# sourceURL=webpack:///./src/index.ts?");
 
 /***/ }),
 
-/***/ "./src/simple.ts":
-/*!***********************!*\
-  !*** ./src/simple.ts ***!
-  \***********************/
-/*! no exports provided */
+/***/ "./src/page/home/home.ts":
+/*!*******************************!*\
+  !*** ./src/page/home/home.ts ***!
+  \*******************************/
+/*! exports provided: HomePage */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lit_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lit-html */ \"./node_modules/lit-html/lit-html.js\");\n\n\nclass HelloWorld extends HTMLElement {\n  constructor() {\n    super();\n    Object(lit_html__WEBPACK_IMPORTED_MODULE_0__[\"render\"])(this.render(), this.attachShadow({\n      mode: \"open\"\n    }));\n  }\n\n  render() {\n    return lit_html__WEBPACK_IMPORTED_MODULE_0__[\"html\"]` <div>hello world</div>`;\n  }\n\n}\n\ncustomElements.define(\"hello-world\", HelloWorld);\n\n//# sourceURL=webpack:///./src/simple.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"HomePage\", function() { return HomePage; });\n/* harmony import */ var lit_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lit-html */ \"./node_modules/lit-html/lit-html.js\");\n\nconst highlightStyles = {\n  color: \"pink\"\n};\nclass HomePage extends HTMLElement {\n  constructor() {\n    super();\n    Object(lit_html__WEBPACK_IMPORTED_MODULE_0__[\"render\"])(this.render(), this.attachShadow({\n      mode: \"open\"\n    }));\n  }\n\n  connectedCallback() {\n    console.log(\"callback\");\n  }\n\n  static get is() {\n    return \"home-page\";\n  }\n\n  render() {\n    console.log(\"render\");\n    return lit_html__WEBPACK_IMPORTED_MODULE_0__[\"html\"]` <div>home page</div> `;\n  }\n\n}\n\n//# sourceURL=webpack:///./src/page/home/home.ts?");
+
+/***/ }),
+
+/***/ "./src/page/home/index.ts":
+/*!********************************!*\
+  !*** ./src/page/home/index.ts ***!
+  \********************************/
+/*! exports provided: HomePage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _home__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./home */ \"./src/page/home/home.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"HomePage\", function() { return _home__WEBPACK_IMPORTED_MODULE_0__[\"HomePage\"]; });\n\n\n\n//# sourceURL=webpack:///./src/page/home/index.ts?");
+
+/***/ }),
+
+/***/ "./src/page/index.ts":
+/*!***************************!*\
+  !*** ./src/page/index.ts ***!
+  \***************************/
+/*! exports provided: HomePage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _home__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./home */ \"./src/page/home/index.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"HomePage\", function() { return _home__WEBPACK_IMPORTED_MODULE_0__[\"HomePage\"]; });\n\n\n\n//# sourceURL=webpack:///./src/page/index.ts?");
+
+/***/ }),
+
+/***/ "./src/routes/home/home.ts":
+/*!*********************************!*\
+  !*** ./src/routes/home/home.ts ***!
+  \*********************************/
+/*! exports provided: home */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"home\", function() { return home; });\n/* harmony import */ var _page___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../page/ */ \"./src/page/index.ts\");\n\nconst home = {\n  path: \"/\",\n  action: () => {\n    customElements.define(_page___WEBPACK_IMPORTED_MODULE_0__[\"HomePage\"].is, _page___WEBPACK_IMPORTED_MODULE_0__[\"HomePage\"]);\n    return \"<home-page></home-page>\";\n  }\n};\n\n//# sourceURL=webpack:///./src/routes/home/home.ts?");
+
+/***/ }),
+
+/***/ "./src/routes/home/index.ts":
+/*!**********************************!*\
+  !*** ./src/routes/home/index.ts ***!
+  \**********************************/
+/*! exports provided: home */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _home__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./home */ \"./src/routes/home/home.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"home\", function() { return _home__WEBPACK_IMPORTED_MODULE_0__[\"home\"]; });\n\n\n\n//# sourceURL=webpack:///./src/routes/home/index.ts?");
+
+/***/ }),
+
+/***/ "./src/routes/index.ts":
+/*!*****************************!*\
+  !*** ./src/routes/index.ts ***!
+  \*****************************/
+/*! exports provided: routes */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _route__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./route */ \"./src/routes/route.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"routes\", function() { return _route__WEBPACK_IMPORTED_MODULE_0__[\"routes\"]; });\n\n\n\n//# sourceURL=webpack:///./src/routes/index.ts?");
+
+/***/ }),
+
+/***/ "./src/routes/route.ts":
+/*!*****************************!*\
+  !*** ./src/routes/route.ts ***!
+  \*****************************/
+/*! exports provided: routes */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"routes\", function() { return routes; });\n/* harmony import */ var _home__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./home */ \"./src/routes/home/index.ts\");\n\nconst routes = [_home__WEBPACK_IMPORTED_MODULE_0__[\"home\"]];\n\n//# sourceURL=webpack:///./src/routes/route.ts?");
 
 /***/ }),
 

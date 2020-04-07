@@ -1,4 +1,5 @@
 import { html, render } from "lit-html";
+import { styleMap } from "lit-html/directives/style-map";
 
 export class HomePage extends HTMLElement {
   constructor() {
@@ -10,9 +11,15 @@ export class HomePage extends HTMLElement {
     return "home-page";
   }
 
+  get styles() {
+    return {
+      title: {
+        color: "pink",
+      },
+    };
+  }
+
   render() {
-    return html` <div>home page</div>`;
+    return html` <div style=${styleMap(this.styles.title)}>home page</div> `;
   }
 }
-
-// customElements.define(HomePage.is, HomePage);

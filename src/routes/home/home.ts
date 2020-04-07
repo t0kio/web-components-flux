@@ -1,4 +1,4 @@
-import { HomePage } from "../../page/home";
+import { HomePage } from "../../page/";
 export const home = {
   path: "/",
   action: () => {
