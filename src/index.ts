@@ -1,5 +1,6 @@
 import UniversalRouter from "universal-router";
 import { routes } from "./routes";
+import { rootStore } from "./module";
 
 const router = new UniversalRouter(routes);
 
@@ -9,4 +10,5 @@ const render = (location: string) => {
   });
 };
 
+console.log(rootStore.getState());
 render(window.location.pathname);
