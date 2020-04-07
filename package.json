@@ -5,6 +5,9 @@
   "repository": "https://github.com/t0kio/web-components-flux.git",
   "author": "t0kio <haruki.igarashi7@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "npx webpack-dev-server"
+  },
   "dependencies": {
     "lit-html": "^1.2.1",
     "universal-router": "^9.0.1",
