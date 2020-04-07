@@ -1,14 +1,14 @@
 import { html, render } from "lit-html";
 import { styleMap } from "lit-html/directives/style-map";
-import "../../components/title";
-export class LoginPage extends HTMLElement {
+
+export class Title extends HTMLElement {
   constructor() {
     super();
     render(this.render(), this.attachShadow({ mode: "open" }));
   }
 
   static get is() {
-    return "login-page";
+    return "title-tag";
   }
 
   get styles() {
@@ -20,6 +20,10 @@ export class LoginPage extends HTMLElement {
   }
 
   render() {
-    return html` <div style=${styleMap(this.styles.title)}>login page</div> `;
+    return html`
+      <div style=${styleMap(this.styles.title)}>title componets</div>
+    `;
   }
 }
+
+customElements.define(Title.is, Title);
