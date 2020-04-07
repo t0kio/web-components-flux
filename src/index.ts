@@ -3,6 +3,10 @@ import { routes } from "./routes";
 
 const router = new UniversalRouter(routes);
 
-router.resolve("/").then((html) => {
-  document.body.innerHTML = html.toString();
-});
+const render = (location: string) => {
+  router.resolve(location).then((html) => {
+    document.body.innerHTML = html.toString();
+  });
+};
+
+render(window.location.pathname);
