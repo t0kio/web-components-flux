@@ -2,13 +2,22 @@ import { html, render } from "lit-html";
 import { styleMap } from "lit-html/directives/style-map";
 
 export class Title extends HTMLElement {
+  count: string;
   constructor() {
     super();
-    render(this.render(), this.attachShadow({ mode: "open" }));
   }
 
   static get is() {
     return "title-tag";
+  }
+
+  connectedCallback() {
+    this.count = this.getAttribute("data");
+    render(this.render(), this.attachShadow({ mode: "open" }));
+  }
+
+  static get observedAttributes() {
+    return ["data"];
   }
 
   get styles() {
@@ -19,9 +28,16 @@ export class Title extends HTMLElement {
     };
   }
 
+  attributeChangedCallback(name, oldValue, newValue) {
+    this.count = newValue;
+    render(this.render(), this.shadowRoot);
+  }
+
   render() {
     return html`
-      <div style=${styleMap(this.styles.title)}>title componets</div>
+      <div style=${styleMap(this.styles.title)}>
+        title componets${this.count}
+      </div>
     `;
   }
 }
