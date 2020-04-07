@@ -242,38 +242,38 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var path
 
 /***/ }),
 
-/***/ "./src/index.js":
+/***/ "./src/index.ts":
 /*!**********************!*\
-  !*** ./src/index.js ***!
+  !*** ./src/index.ts ***!
   \**********************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var universal_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! universal-router */ \"./node_modules/universal-router/module.js\");\n/* harmony import */ var _simple_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./simple.js */ \"./src/simple.js\");\n\n\nconst routes = [{\n  path: \"/home\",\n  // optional\n  action: () => `<div>hello</div>`\n}];\nconst router = new universal_router__WEBPACK_IMPORTED_MODULE_0__[\"default\"](routes);\nrouter.resolve(\"/home\").then(html => {\n  console.log(html);\n  document.body.innerHTML = html; // renders: <h1>Posts</h1>\n});\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var universal_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! universal-router */ \"./node_modules/universal-router/module.js\");\n/* harmony import */ var _simple_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./simple.ts */ \"./src/simple.ts\");\n\n\nconst routes = [{\n  path: \"/\",\n  // optional\n  action: () => `<hello-world></hello-world>`\n}, {\n  path: \"/home\",\n  // optional\n  action: () => `<div>hello</div>`\n}];\nconst router = new universal_router__WEBPACK_IMPORTED_MODULE_0__[\"default\"](routes);\nrouter.resolve(\"/\").then(html => {\n  document.body.innerHTML = html.toString();\n});\nsetTimeout(() => {\n  router.resolve(\"/home\").then(html => {\n    document.body.innerHTML = html.toString();\n  });\n}, 5000);\n\n//# sourceURL=webpack:///./src/index.ts?");
 
 /***/ }),
 
-/***/ "./src/simple.js":
+/***/ "./src/simple.ts":
 /*!***********************!*\
-  !*** ./src/simple.js ***!
+  !*** ./src/simple.ts ***!
   \***********************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lit_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lit-html */ \"./node_modules/lit-html/lit-html.js\");\n\n\nclass HelloWorld extends HTMLElement {\n  constructor() {\n    super();\n    Object(lit_html__WEBPACK_IMPORTED_MODULE_0__[\"render\"])(this.render(), this.attachShadow({\n      mode: \"open\"\n    }));\n  }\n\n  render() {\n    return lit_html__WEBPACK_IMPORTED_MODULE_0__[\"html\"]` <div>hello world</div>`;\n  }\n\n}\n\ncustomElements.define(\"hello-world\", HelloWorld);\n\n//# sourceURL=webpack:///./src/simple.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lit_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lit-html */ \"./node_modules/lit-html/lit-html.js\");\n\n\nclass HelloWorld extends HTMLElement {\n  constructor() {\n    super();\n    Object(lit_html__WEBPACK_IMPORTED_MODULE_0__[\"render\"])(this.render(), this.attachShadow({\n      mode: \"open\"\n    }));\n  }\n\n  render() {\n    return lit_html__WEBPACK_IMPORTED_MODULE_0__[\"html\"]` <div>hello world</div>`;\n  }\n\n}\n\ncustomElements.define(\"hello-world\", HelloWorld);\n\n//# sourceURL=webpack:///./src/simple.ts?");
 
 /***/ }),
 
 /***/ 0:
 /*!****************************!*\
-  !*** multi ./src/index.js ***!
+  !*** multi ./src/index.ts ***!
   \****************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__(/*! ./src/index.js */\"./src/index.js\");\n\n\n//# sourceURL=webpack:///multi_./src/index.js?");
+eval("module.exports = __webpack_require__(/*! ./src/index.ts */\"./src/index.ts\");\n\n\n//# sourceURL=webpack:///multi_./src/index.ts?");
 
 /***/ })
 

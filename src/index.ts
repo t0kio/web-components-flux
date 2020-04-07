@@ -1,5 +1,5 @@
 import UniversalRouter from "universal-router";
-import "./simple.js";
+import "./simple.ts";
 
 const routes = [
   {
@@ -15,12 +15,11 @@ const routes = [
 const router = new UniversalRouter(routes);
 
 router.resolve("/").then((html) => {
-  console.log(html);
-  document.body.innerHTML = html; // renders: <h1>Posts</h1>
+  document.body.innerHTML = html.toString();
 });
 
 setTimeout(() => {
   router.resolve("/home").then((html) => {
-    document.body.innerHTML = html; // renders: <h1>Posts</h1>
+    document.body.innerHTML = html.toString();
   });
 }, 5000);
